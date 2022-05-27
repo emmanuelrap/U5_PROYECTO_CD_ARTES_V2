@@ -2,10 +2,12 @@ package com.example.u5_proyecto_cd_artes_v2
 
 import android.app.Activity
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.GeoPoint
 
-    class Data {
+    class Data (activity: MapsActivity){
+        var act = activity
         var nombre: String = ""
         var posicion1: GeoPoint = GeoPoint(0.0,0.0)
         var posicion2: GeoPoint = GeoPoint(0.0,0.0)
@@ -16,10 +18,24 @@ import com.google.firebase.firestore.GeoPoint
         }
 
         fun estoyEn(posicionActual:GeoPoint): Boolean{
-            if(posicionActual.latitude >= posicion1.latitude &&
-                posicionActual.latitude <= posicion2.latitude){
-                if(invertir(posicionActual.longitude) >= invertir(posicion1.longitude) &&
-                    invertir(posicionActual.longitude) <= invertir(posicion2.longitude)){
+           /* AlertDialog.Builder(act)
+                .setMessage("estoyEn(1er IF ${nombre}) \n\n     posicionActual.latitude  / posicion1.latitude &&\n" + "posicionActual.latitude /  posicion2.latitude"
+                   +" \n\n(Var)     ${posicionActual.latitude} < ${posicion1.latitude} && \n" + "${posicionActual.latitude} > ${posicion2.latitude}"
+                )
+                .setPositiveButton("OK"){p,q-> }
+                .show()*/
+
+            if(posicionActual.latitude < posicion1.latitude &&
+                posicionActual.latitude > posicion2.latitude){
+
+              /*  AlertDialog.Builder(act)
+                    .setMessage("\n\n estoyEn(2do IF ${nombre}) \n\n    invertir(posicionActual.longitude) / invertir(posicion1.longitude) &&  invertir(posicionActual.longitude) / invertir(posicion2.longitude"
+                            +" \n\n(Var)    ${invertir(posicionActual.longitude)} < ${invertir(posicion1.longitude)} && ${invertir(posicionActual.longitude)} > ${invertir(posicion2.longitude)}")
+                    .setPositiveButton("OK"){p,q-> }
+                    .show()*/
+
+                if(invertir(posicionActual.longitude) < invertir(posicion1.longitude) &&
+                    invertir(posicionActual.longitude) > invertir(posicion2.longitude)){
                     return true
                 }
             }

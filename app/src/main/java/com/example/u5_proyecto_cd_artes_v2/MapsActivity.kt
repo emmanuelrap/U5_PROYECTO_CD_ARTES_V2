@@ -62,7 +62,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                             " punto 2: ${documento.getGeoPoint("punto2")!! }\n\n"
                     lugares.add(cadena)
 
-                    var data=Data()
+                    var data=Data(this)
                     data.nombre = documento.getString("nombre").toString()
                     data.posicion1=documento.getGeoPoint("punto1")!!
                     data.posicion2=documento.getGeoPoint("punto2")!!
@@ -92,7 +92,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         //ANIMACION DE CAMARA
         mMap.animateCamera(
-            CameraUpdateFactory.newLatLngZoom(LatLng(21.5250085, -104.9115703),20f),3000,null //Cuanto zoom y cuando durarà
+            CameraUpdateFactory.newLatLngZoom(LatLng(21.51108496011311, -104.90307329600743),17f),3000,null //Cuanto zoom y cuando durarà
         )
 
         //CLIC EN MAPA
@@ -110,19 +110,17 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 var bandera=false
                 for(item in posicion){
                     AlertDialog.Builder(this)
-                        .setMessage("Sus Coordenadas Actuales: "+it.latitude+","+it.longitude+"\n\n")
+                        .setMessage("(M-01) Sus Coordenadas Actuales: "+it.latitude+","+it.longitude+"\n\n")
                         .setPositiveButton("OK"){p,q-> }
                         .show()
 
-                    //SI ENTRA
+                    //SI Compara
                     if(item.estoyEn(geoPos)){
                         AlertDialog.Builder(this)
                             .setMessage("Usted esta en "+item.nombre)
                             .setPositiveButton("OK"){p,q-> }
                             .show()
                         bandera=true
-
-
                     }
                 }
 
@@ -142,7 +140,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     //CREAR LOS MARCADORES
     private fun crearMarcadores() {
-        val coordenadasPrincipales = LatLng(21.51108496011311, -104.90307329600743)
 
         val jardinDignidad=MarkerOptions().position(LatLng(21.512381454724817, -104.90404305341924)).title("Jardín de la Dignidad")
             .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
