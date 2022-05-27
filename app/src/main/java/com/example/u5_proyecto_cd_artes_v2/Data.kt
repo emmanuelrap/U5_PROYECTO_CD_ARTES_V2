@@ -6,8 +6,9 @@ import androidx.appcompat.app.AlertDialog
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.GeoPoint
 
-    class Data (activity: MapsActivity){
-        var act = activity
+    //class Data (activity: MapsActivity){
+        class Data (){
+       // var act = activity
         var nombre: String = ""
         var posicion1: GeoPoint = GeoPoint(0.0,0.0)
         var posicion2: GeoPoint = GeoPoint(0.0,0.0)
@@ -28,9 +29,10 @@ import com.google.firebase.firestore.GeoPoint
             if(posicionActual.latitude < posicion1.latitude &&
                 posicionActual.latitude > posicion2.latitude){
 
-              /*  AlertDialog.Builder(act)
+                    /*
+                AlertDialog.Builder(act)
                     .setMessage("\n\n estoyEn(2do IF ${nombre}) \n\n    invertir(posicionActual.longitude) / invertir(posicion1.longitude) &&  invertir(posicionActual.longitude) / invertir(posicion2.longitude"
-                            +" \n\n(Var)    ${invertir(posicionActual.longitude)} < ${invertir(posicion1.longitude)} && ${invertir(posicionActual.longitude)} > ${invertir(posicion2.longitude)}")
+                            +" \n\n(Var)    ${invertir(posicionActual.longitude)} > ${invertir(posicion1.longitude)} && ${invertir(posicionActual.longitude)} < ${invertir(posicion2.longitude)}")
                     .setPositiveButton("OK"){p,q-> }
                     .show()*/
 

@@ -62,7 +62,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                             " punto 2: ${documento.getGeoPoint("punto2")!! }\n\n"
                     lugares.add(cadena)
 
-                    var data=Data(this)
+                    var data=Data()
+                    //var data=Data(this)
                     data.nombre = documento.getString("nombre").toString()
                     data.posicion1=documento.getGeoPoint("punto1")!!
                     data.posicion2=documento.getGeoPoint("punto2")!!
